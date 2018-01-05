@@ -50,6 +50,10 @@ cc.Class({
         this.controlsLabel.setPositionX(0);
         this.player.getComponent('Player').game = this;
         cc.audioEngine.playEffect(this.menuAudio, false);
+        if (cc.sys.mobile) {
+            this.controlsLabel.string = 'Touch left or right side of the screen to move';
+            this.startTextNode.string = 'Touch to Start';
+        }
     },
 
     startGame () {
