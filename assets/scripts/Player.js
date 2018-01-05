@@ -69,6 +69,30 @@ cc.Class({
                 }
             }
         }, this.node);
+
+        // touch input
+        cc.eventManager.addListener({
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            onTouchBegan: (touch, event) => {
+                if (this.game.running === false) {
+                    this.game.startGame();
+                }
+                var touchLoc = touch.getLocation();
+                if (touchLoc.x >= cc.winSize.width/2) {
+                    this.accLeft = false;
+                    this.accRight = true;
+                } else {
+                    this.accLeft = true;
+                    this.accRight = false;
+                }
+                // don't capture the event
+                return true;
+            },
+            onTouchEnded: (touch, event) => {
+                this.accLeft = false;
+                this.accRight = false;
+            }
+        }, this.node);
     },
 
     // LIFE-CYCLE CALLBACKS:
