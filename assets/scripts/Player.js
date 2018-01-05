@@ -83,7 +83,7 @@ cc.Class({
                     this.accLeft = false;
                     this.accRight = true;
                 } else {
-                    this.node.scaleX = -1;
+                    this.node.scaleX = 1;
                     this.accLeft = true;
                     this.accRight = false;
                 }
