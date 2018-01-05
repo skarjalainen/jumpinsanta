@@ -1,13 +1,3 @@
-// Learn cc.Class:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/class.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/class/index.html
-// Learn Attribute:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/reference/attributes.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/reference/attributes/index.html
-// Learn life-cycle callbacks:
-//  - [Chinese] http://www.cocos.com/docs/creator/scripting/life-cycle-callbacks.html
-//  - [English] http://www.cocos2d-x.org/docs/editors_and_tools/creator-chapters/scripting/life-cycle-callbacks/index.html
-
 cc.Class({
     extends: cc.Component,
 
@@ -97,19 +87,17 @@ cc.Class({
 
     update (dt) {
         var accel = this.accel * dt;
-        if (this.canJump && Math.round(this.node.y) <= -256) {
-            if (this.accLeft) {
+        if (this.accLeft) {
+            this.xSpeed -= accel;
+        } else if (this.accRight) {
+            this.xSpeed += accel;
+        } else {
+            if (this.xSpeed > accel) {
                 this.xSpeed -= accel;
-            } else if (this.accRight) {
+            } else if (this.xSpeed < -accel) {
                 this.xSpeed += accel;
             } else {
-                if (this.xSpeed > accel) {
-                    this.xSpeed -= accel;
-                } else if (this.xSpeed < -accel) {
-                    this.xSpeed += accel;
-                } else {
-                    this.xSpeed = 0;                
-                }
+                this.xSpeed = 0;
             }
         }
         if ( Math.abs(this.xSpeed) > this.maxMoveSpeed ) {
