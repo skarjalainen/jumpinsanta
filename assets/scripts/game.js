@@ -83,7 +83,7 @@ cc.Class({
         this.fallSpeed += 10;
         var newPresent = cc.instantiate(this.presentPrefab);
         this.node.addChild(newPresent);
-        newPresent.setPosition(cc.p(cc.randomMinus1To1() * this.node.width/2, 480));
+        newPresent.setPosition(cc.p(cc.randomMinus1To1() * (this.node.width*0.8)/2, 480));
         newPresent.getComponent('Present').game = this;
     },
 

@@ -79,9 +79,11 @@ cc.Class({
                 }
                 var touchLoc = touch.getLocation();
                 if (touchLoc.x >= cc.winSize.width/2) {
+                    this.node.scaleX = -1;
                     this.accLeft = false;
                     this.accRight = true;
                 } else {
+                    this.node.scaleX = -1;
                     this.accLeft = true;
                     this.accRight = false;
                 }
